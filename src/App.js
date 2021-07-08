@@ -454,8 +454,7 @@ function Team(props) {
     setAnchorEl(null);
   };
   const handler = function (e) {
-    console.log(e.target.getAttribute("data-key")); //will log the index of the clicked item
-    //alert( e.target.getAttribute("dataIndex"))
+    console.log(e.target.getAttribute("data-key")); 
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
