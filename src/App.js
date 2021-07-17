@@ -16,6 +16,7 @@ import { RiFacebookFill } from "react-icons/ri";
 import { RiLinkedinFill } from "react-icons/ri";
 import { RiTwitterFill } from "react-icons/ri";
 import hover from "./pics/hover.png";
+
 import {
   withScriptjs,
   withGoogleMap,
@@ -147,13 +148,13 @@ const useStyles = makeStyles((theme) => ({
   },
   spaceUs: {
     marginRight: "15px",
-    [theme.breakpoints.down(520)]: {
+    [theme.breakpoints.down(570)]: {
       marginRight: "0px",
       width:'100%'
     },
   },
   spaceUs2:{
-    [theme.breakpoints.down(520)]: {
+    [theme.breakpoints.down(570)]: {
       marginTop:'15px',
       width:'100%'
     },
@@ -454,7 +455,8 @@ function Team(props) {
     setAnchorEl(null);
   };
   const handler = function (e) {
-    console.log(e.target.getAttribute("data-key")); 
+    console.log(e.target.getAttribute("data-key")); //will log the index of the clicked item
+    //alert( e.target.getAttribute("dataIndex"))
   };
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -559,7 +561,10 @@ const MyMapComponent = withScriptjs(
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   const classes = useStyles();
- 
+  const [googleMapURL,setGoogleMapURL] = React.useState('')
+
+
+
 
   return (
     <div
@@ -587,7 +592,7 @@ function TabPanel(props) {
               <div id="map" className={classes.mobileIdMap}>
                 <MyMapComponent
                   isMarkerShown
-                  googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                  googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places'
                   loadingElement={<div style={{ height: `100%` }} />}
                   containerElement={<div className={classes.mobileMap} />}
                   mapElement={<div style={{ height: `100%` }} />}
@@ -729,7 +734,7 @@ function ContactUs() {
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div id="contact" className={classes.contact}>
+      <div id="contact" className={classes.contact}>
           <form className={classes.root} noValidate autoComplete="off">
             <Box id="name" style={{ marginBottom: "20px" }}>
               <TextField
@@ -742,6 +747,7 @@ function ContactUs() {
                 id="outlined-basic"
                 label="Your Email*"
                 variant="outlined"
+                classes={{ root: classes.spaceUs2 }}
               />
             </Box>
             <Box id="numberAndSubject" style={{ marginBottom: "20px" }}>
@@ -755,6 +761,7 @@ function ContactUs() {
                 id="outlined-basic"
                 label="Subject"
                 variant="outlined"
+                classes={{ root: classes.spaceUs2 }}
               />
             </Box>
             <div id="message" style={{ marginBottom: "20px" }}>
@@ -762,11 +769,12 @@ function ContactUs() {
                 label="Your Message*"
                 variant="outlined"
                 style={{ width: "100%" }}
-                InputProps={{
-                  input: {
-                    height: "80px",
+                inputProps={{
+                  style: {
+                    height: "200px",
                   },
                 }}
+                classes={{ root: classes.spaceUs2 }}
               />
             </div>
             <Button
