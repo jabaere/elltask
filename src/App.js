@@ -227,6 +227,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mapOfContactUs: {
     width: "40%",
+    height:'510px',
     [theme.breakpoints.down(1238)]: {
       width: "auto",
       display: "flex",
